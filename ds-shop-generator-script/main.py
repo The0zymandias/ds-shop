@@ -47,7 +47,7 @@ def main():
         TMPData = load(file)
         
     except FileNotFoundError:
-      return "params file does not exist."
+      return "tmp file does not exist."
       
   elif buildTMPFile or buildUNIFile:
     try:
