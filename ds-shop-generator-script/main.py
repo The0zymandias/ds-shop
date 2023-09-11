@@ -1,6 +1,6 @@
 from json import load, dump
 from os.path import isfile
-import requests
+from requests import get
 from bs4 import BeautifulSoup
 
 TMPData = {}
@@ -68,7 +68,7 @@ def main():
       url = url+"/"
 
       #gets the html from the url
-      tempReqs = requests.get(url)
+      tempReqs = get(url)
       HTMLSoup = BeautifulSoup(tempReqs.text, 'html.parser')
       
       for link in HTMLSoup.find_all('a'):
@@ -77,13 +77,13 @@ def main():
 
         #makes sure the file is of the correct type and preps the filename for display in the unistore
         if endsWith(currentLink, ".7z"):
-          currentLinkText.removesuffix(".7z")
+          currentLinkText = currentLinkText.removesuffix(".7z")
           
         elif endsWith(currentLink, ".zip"): 
-          currentLinkText.removesuffix(".zip")
+          currentLinkText = currentLinkText.removesuffix(".zip")
           
         elif endsWith(currentLink, ".nds"):
-          currentLinkText.removesuffix(".nds")
+          currentLinkText = currentLinkText.removesuffix(".nds")
           
         else:
           continue
@@ -188,7 +188,7 @@ def main():
             }
           ]
         elif typeVal == ".nds":
-          tempItem[k] = [
+          tempItem[k2] = [
             {
           "type": "downloadFile",
           "file": v2,
