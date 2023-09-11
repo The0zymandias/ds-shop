@@ -24,10 +24,7 @@ unistore = {
 
 def endsWith(string, sub):
   ml, sl, = len(string), len(sub)
-  if string[ml-sl:] == sub:
-    return True
-  else:
-    return False
+  return string[ml-sl:] == sub
 
 def main():
   #get user input, determine which parts run
